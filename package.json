@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon --exec babel-node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "migrations": "sequelize db:migrate",
+    "build": "babel ./src --out-dir dist --ignore ./node_modules",
     "lint": "eslint .",
     "reset-db": "sequelize db:drop && sequelize db:create"
   },
@@ -32,8 +33,9 @@
     "sequelize": "^5.21.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/node": "^7.7.4",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/register": "^7.7.4",
