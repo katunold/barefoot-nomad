@@ -1,7 +1,7 @@
 version: 2
 defaults: &defaults
   docker:
-    - image: circleci/node:10.0.0-alpine
+    - image: circleci/node:10.8.0
   working_directory: ~/repo
 jobs:
   build:
