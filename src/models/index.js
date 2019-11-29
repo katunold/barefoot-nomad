@@ -1,17 +1,25 @@
-'use strict';
+import fs from 'fs';
+import path from 'path'
+import Sequelize from 'sequelize';
+import configObject from '../config/config';
+import dotenv from 'dotenv';
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+dotenv.config();
+
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config')[env];
+const env = process.env.NODE_ENV;
+const config = configObject[env];
 
 const db = {};
 
 let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+if (env !== 'development') {
+  sequelize = new Sequelize(config.url, {
+    logging: () => {},
+    define: {
+      freezeTableName: true
+    }
+  });
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
@@ -26,7 +34,6 @@ fs
     db[model.name] = model;
   });
 
-console.log(Object.keys(db));
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {

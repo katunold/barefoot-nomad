@@ -1,0 +1,22 @@
+{
+	"include": [
+		"src/**/*.js"
+	],
+	"exclude": [
+		"node_modules",
+		"bin",
+		"db",
+		"coverage",
+		"test",
+		"src/config/*.js",
+		"src/models/*.js",
+		"src/express.js"
+	],
+	"sourceMap": false,
+	"instrument": false,
+	"cache": true,
+	"all": true,
+	"extension": [
+		".js"
+	]
+}
