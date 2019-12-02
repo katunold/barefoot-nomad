@@ -4,12 +4,12 @@
   "description": "A platform to make company global travel and accommodation easy and convenient for the strong workforce of savvy members of staff, by leveraging the modern web.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && cross-env NODE_ENV=production node ./dist/index.js",
     "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js",
     "test": "NODE_ENV=test nyc mocha --require @babel/register --exit",
     "coverage": "npm run test && nyc report --reporter=text-lcov | coveralls",
     "migrations": "sequelize db:migrate",
-    "build": "babel ./src --out-dir dist --ignore ./node_modules",
+    "build": "cross-env NODE_ENV=production babel src -d dist --copy-files",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "lint": "eslint .",
     "reset-db": "sequelize db:drop && sequelize db:create"
   },
@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/andela/blackninjas-backend#readme",
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/polyfill": "^7.4.3",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -40,7 +42,6 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/register": "^7.7.4",
     "babel-plugin-istanbul": "^5.2.0",
