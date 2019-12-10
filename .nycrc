@@ -1,16 +1,21 @@
 {
+	"reporter": [
+		"lcov",
+		"text"
+	],
 	"include": [
 		"src/**/*.js"
 	],
 	"exclude": [
 		"node_modules",
+		"database",
 		"bin",
-		"db",
 		"coverage",
 		"test",
-		"src/config/*.js",
-		"src/models/*.js",
-		"src/express.js"
+		"src/database/**",
+		"src/helpers/**",
+		"src/models/**",
+		"src/index.js"
 	],
 	"sourceMap": false,
 	"instrument": false,

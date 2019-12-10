@@ -3,24 +3,19 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const baseConfig = {
-  dialect: 'postgres'
+  dialect: 'postgres',
 };
 
-module.exports =  {
-  development: Object.assign({}, baseConfig, {
+module.exports = {
+  development: {
+    ...baseConfig,
     username: process.env.DB_USER_NAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DEV_NAME,
     port: process.env.DB_PORT,
     host: process.env.DB_HOST,
-  }),
-  test: Object.assign({}, baseConfig, {
-    url: process.env.TEST_DB_URL,
-  }),
-  staging: Object.assign({}, baseConfig, {
-    url: process.env.DB_STAGING_URL,
-  }),
-  production: Object.assign({}, baseConfig, {
-    url: process.env.DB_PROD_URL,
-  }),
+  },
+  test: { ...baseConfig, url: process.env.TEST_DB_URL },
+  staging: { ...baseConfig, url: process.env.DB_STAGING_URL },
+  production: { ...baseConfig, url: process.env.DB_PROD_URL },
 };
