@@ -3,13 +3,16 @@ FROM node:latest
 LABEL AUTHOR="Arnold Katumba <arnold.katumba@andela.com>"
 
 # set working directory
-WORKDIR /barefoot-nomad-backend
+WORKDIR /usr/barefoot-nomad-backend
 
-# add app
-COPY . /barefoot-nomad-backend
+# copy package.json
+COPY ./package.json .
 
 # install and cache app dependencies
 RUN npm i
 
+# add app
+COPY . .
+
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "run", "start:dev"]
