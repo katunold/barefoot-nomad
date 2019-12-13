@@ -10,5 +10,10 @@ router.post(
   RegisterController.register,
 );
 router.get('/verify-email', RegisterController.accountVerification);
+router.post(
+  '/resend',
+  Validations.validityCheck('resend'),
+  RegisterController.resendVerificationEmail,
+);
 
 export default router;

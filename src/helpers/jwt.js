@@ -1,7 +1,6 @@
 import * as JWT from 'jsonwebtoken';
 
 export default class Jwt {
-
   static signToken = (userId) => {
     const iat = new Date().getTime();
     const exp = new Date().setDate(new Date().getDate() + 1);
@@ -13,9 +12,9 @@ export default class Jwt {
         iat,
         exp,
       },
-      JWT_SECRET
+      JWT_SECRET,
     );
 
     return { token, exp, iat };
-  }
+  };
 }

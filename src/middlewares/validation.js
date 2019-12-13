@@ -43,20 +43,24 @@ export default class Validations {
             .not()
             .isEmpty(),
         ];
-      case 'login':
+      // case 'login':
+      //   return [
+      //     body('email', 'Provide a valid email')
+      //       .trim()
+      //       .isEmail(),
+      //     body('password', 'Password is required')
+      //       .trim()
+      //       .escape()
+      //       .exists()
+      //       .not()
+      //       .isEmpty(),
+      //   ];
+      default:
         return [
           body('email', 'Provide a valid email')
             .trim()
             .isEmail(),
-          body('password', 'Password is required')
-            .trim()
-            .escape()
-            .exists()
-            .not()
-            .isEmpty(),
         ];
-      default:
-        return 'nothing';
     }
   };
 
