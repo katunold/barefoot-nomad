@@ -5,7 +5,7 @@ import compress from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
 import logger from 'morgan';
-import swaggerDoc from '../../swagger';
+import swaggerDoc from '../swagger/swagger';
 
 const app = express();
 app.use(bodyParser.json());

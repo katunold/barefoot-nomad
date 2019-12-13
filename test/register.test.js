@@ -66,7 +66,47 @@ describe('User', () => {
   it('should verify user account', async () => {
     sandbox.stub(userModel, 'update').returns(mockData.verifyAccountResponse);
     const token = Verification.generateVerificationCode(mockData.userData);
-    const response = await chai.request(server).get(`/verify-email/?code=${token}`);
+    const response = await chai
+      .request(server)
+      .get(`/verify-email/?code=${token}`);
     expect(response).to.have.status(200);
+  });
+
+  it('should resend verification email', async () => {
+    sandbox.stub(userModel, 'findOne').returns(mockData.userData);
+    sandbox.stub(sendGrid, 'send').resolves({});
+    const response = await chai
+      .request(server)
+      .post('/resend')
+      .send({ email: 'katunold94@gmail.com' });
+    expect(response).to.have.status(200);
+    expect(response.body)
+      .to.have.property('message')
+      .to.contain(
+        'Verification link sent successfully 🤗, kindly check your email',
+      );
+  });
+
+  it('should throw an error if invalid data is submitted to resend', async () => {
+    const response = await chai
+      .request(server)
+      .post('/resend')
+      .send({ email: 'katunold94' });
+    expect(response).to.have.status(422);
+    expect(response.body).to.contain([]);
+  });
+
+  it('should throw an error if email is not found', async () => {
+    sandbox.stub(userModel, 'findOne').returns(null);
+    const response = await chai
+      .request(server)
+      .post('/resend')
+      .send({ email: 'katunold94@gmail.com' });
+    expect(response).to.have.status(400);
+    expect(response.body)
+      .to.have.property('message')
+      .to.contain(
+        'email katunold94@gmail.com not found, kindly sign-up to get started',
+      );
   });
 });

@@ -32,12 +32,37 @@ export default class RegisterController {
       'password',
     ]);
 
-    const token = Verification.generateVerificationCode(user);
-    const emailBody = Mailer.verificationEmail(user, token);
-    return Mailer.sendMail(emailBody, 'Verification', res);
+    RegisterController.send(user, res);
   };
 
   static accountVerification = async (req, res) => {
     await Verification.validateCode(res, req.query.code);
+  };
+
+  static resendVerificationEmail = async (req, res) => {
+    const { email } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return Validations.errorDisplay(req, res, errors);
+    }
+    const user = await db.User.findOne({
+      where: {
+        email,
+        verified: false,
+      },
+    });
+    if (user) {
+      return RegisterController.send(user, res);
+    }
+
+    return res.status(400).send({
+      message: `email ${email} not found, kindly sign-up to get started`,
+    });
+  };
+
+  static send = (user, res) => {
+    const token = Verification.generateVerificationCode(user);
+    const emailBody = Mailer.verificationEmail(user, token);
+    return Mailer.sendMail(emailBody, 'Verification', res);
   };
 }

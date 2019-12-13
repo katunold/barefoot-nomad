@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
 app.use(routes);
 
 app.server = app.listen(PORT, () =>
-  console.log(`server has started on port ${PORT}`),);
+  console.log(`server has started on port ${PORT}`),
+);
 
 const server = app.server;
 

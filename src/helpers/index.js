@@ -38,9 +38,7 @@ export default class Verification {
       );
       if (verifyAccount) {
         const { dataValues } = verifyAccount[1][0];
-        const { token, exp, iat } = await Jwt.signToken(
-          dataValues.userId,
-        );
+        const { token, exp, iat } = await Jwt.signToken(dataValues.userId);
         delete dataValues.userId;
         return res.status(200).send({
           message: `Your account has been verified 🎊`,
