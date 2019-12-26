@@ -10,7 +10,7 @@ const { expect } = chai;
 
 const userModel = db.User;
 
-describe('User', () => {
+describe('Register', () => {
   let sandbox;
 
   beforeEach((done) => {

@@ -65,24 +65,7 @@
         "security": [],
         "parameters": [
           {
-            "in": "body",
-            "name": "Resend",
-            "description": "Resend verification email",
-            "schema": {
-              "type": "object",
-              "required": [
-                "email"
-              ],
-              "properties": {
-                "email": {
-                  "type": "string",
-                  "default": false
-                }
-              },
-              "example": {
-                "email": "testclient@mail.com"
-              }
-            }
+            "$ref": "#/parameters/resend"
           }
         ],
         "responses": {
@@ -101,44 +84,116 @@
         ]
       }
     },
-    "parameters": {
-      "register": {
-        "in": "body",
-        "name": "Resend",
-        "description": "User sign-up",
-        "schema": {
-          "type": "object",
-          "required": [
-            "firstName",
-            "lastName",
-            "email",
-            "password"
-          ],
-          "properties": {
-            "firstName": {
-              "type": "string",
-              "default": false
-            },
-            "lastName": {
-              "type": "string",
-              "default": false
-            },
-            "email": {
-              "type": "string",
-              "default": false
-            },
-            "password": {
-              "type": "string",
-              "format": "password",
-              "minLength": 8
-            }
-          },
-          "example": {
-            "firstName": "test",
-            "lastName": "client",
-            "email": "testclient@mail.com",
-            "password": "1qaz2wsx"
+    "/login": {
+      "post": {
+        "description": "Login a user",
+        "consumes": ["application/json"],
+        "security": [],
+        "parameters": [
+          {
+            "$ref": "#/parameters/login"
           }
+        ],
+        "responses": {
+          "201": {
+            "description": "created"
+          },
+          "422": {
+            "description": "unprocessable entity"
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "register": {
+      "in": "body",
+      "name": "Resend",
+      "description": "User sign-up",
+      "schema": {
+        "type": "object",
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "password"
+        ],
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "default": false
+          },
+          "lastName": {
+            "type": "string",
+            "default": false
+          },
+          "email": {
+            "type": "string",
+            "default": false
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "minLength": 8
+          }
+        },
+        "example": {
+          "firstName": "test",
+          "lastName": "client",
+          "email": "testclient@mail.com",
+          "password": "1qaz2wsx"
+        }
+      }
+    },
+    "resend": {
+      "in": "body",
+      "name": "Resend",
+      "description": "Resend verification email",
+      "schema": {
+        "type": "object",
+        "required": [
+          "email"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "default": false
+          }
+        },
+        "example": {
+          "email": "testclient@mail.com"
+        }
+      }
+    },
+    "login": {
+      "in": "body",
+      "name": "Login",
+      "description": "Login user",
+      "schema": {
+        "type": "object",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "default": false
+          },
+          "password": {
+            "type": "string",
+            "default": false
+          }
+        },
+        "example": {
+          "email": "testclient@mail.com",
+          "password": "1qaz2wsx"
         }
       }
     }

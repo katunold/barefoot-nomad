@@ -39,3 +39,49 @@ exports.registerWithMissingFields = {
   email: 'katumba@mail.com',
   password: '1qaz2wsx',
 };
+
+exports.loginData = {
+  email: 'katumba@gmail.com',
+  password: '1qaz2wsx',
+};
+
+exports.faultyLoginData = {
+  email: 'katumba@gmail',
+  password: '1qaz2wsx',
+};
+
+exports.userDataResponseOnLogin = {
+  userId: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
+  firstName: 'Arnold',
+  lastName: 'Katumba',
+  email: 'katunold94@gmail.com',
+  verified: true,
+  dataValues: {
+    password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
+  },
+  validatePassword: () => true
+};
+
+exports.userDataResponseOnLoginNotVerified = {
+  userId: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
+  firstName: 'Arnold',
+  lastName: 'Katumba',
+  email: 'katunold94@gmail.com',
+  verified: false,
+  dataValues: {
+    password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
+  },
+  validatePassword: () => true
+};
+
+exports.validatePasswordFalse = {
+  userId: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
+  firstName: 'Arnold',
+  lastName: 'Katumba',
+  email: 'katunold94@gmail.com',
+  verified: true,
+  dataValues: {
+    password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
+  },
+  validatePassword: () => false
+};
