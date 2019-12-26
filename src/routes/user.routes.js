@@ -2,6 +2,7 @@ import { Router } from 'express';
 import RegisterController from '../controllers/register.controller';
 import Validations from '../middlewares/validation';
 import LoginController from '../controllers/login.controller';
+import ResetController from '../controllers/reset.controller';
 
 const router = Router();
 
@@ -20,6 +21,16 @@ router.post(
   '/login',
   Validations.validityCheck('login'),
   LoginController.login,
+);
+router.post(
+  '/reset-password',
+  Validations.validityCheck('reset-password'),
+  ResetController.passwordReset,
+);
+router.put(
+  '/new-password',
+  Validations.validityCheck('new-password'),
+  ResetController.newPassword,
 );
 
 export default router;

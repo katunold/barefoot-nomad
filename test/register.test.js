@@ -22,6 +22,22 @@ describe('Register', () => {
     sandbox.restore();
   });
 
+  const accountVerificationHelper = (
+    updateResponse,
+    valid = [true],
+    error = false,
+  ) => {
+    error
+      ? sandbox.stub(userModel, 'update').throws(['Something went wrong'])
+      : sandbox.stub(userModel, 'update').returns(updateResponse);
+
+    sandbox.stub(Verification, 'validateCode').returns(valid);
+    return chai
+      .request(server)
+      .get('/verify-email/?code=MjAxOS0xMi0yNlQyMT')
+      .send();
+  };
+
   // tests to cover user signup
 
   it('should create a new user account', async () => {
@@ -108,5 +124,39 @@ describe('Register', () => {
       .to.contain(
         'email katunold94@gmail.com not found, kindly sign-up to get started',
       );
+  });
+
+  it('should verify account', async () => {
+    const response = await accountVerificationHelper(
+      mockData.verifyAccountResponse,
+    );
+    expect(response).to.have.status(200);
+  });
+
+  it('should throw an error if user is not found', async () => {
+    const response = await accountVerificationHelper(null);
+    expect(response).to.have.status(404);
+    expect(response.body)
+      .to.have.property('message')
+      .to.contain(
+        'Sorry, user not found. Kindly register to have a new account 🥺',
+      );
+  });
+
+  it('should throw an error in case of a server error', async () => {
+    const response = await accountVerificationHelper(
+      mockData.verifyAccountResponse,
+      [true],
+      true,
+    );
+    expect(response).to.have.status(500);
+  });
+
+  it('should throw an error in case the token expired', async () => {
+    const response = await accountVerificationHelper(
+      mockData.verifyAccountResponse,
+      [false],
+    );
+    expect(response).to.have.status(400);
   });
 });

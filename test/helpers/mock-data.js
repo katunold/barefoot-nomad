@@ -85,3 +85,11 @@ exports.validatePasswordFalse = {
   },
   validatePassword: () => false
 };
+
+exports.resetPasswordData = {
+  email: 'testclient@gmail.com'
+};
+
+exports.faultyResetPasswordData = {
+  email: 'testclient@gmail'
+};
