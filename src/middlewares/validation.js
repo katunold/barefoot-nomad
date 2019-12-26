@@ -55,6 +55,21 @@ export default class Validations {
             .not()
             .isEmpty(),
         ];
+      case 'reset-password':
+        return [
+          body('email', 'Provide a valid email')
+            .trim()
+            .isEmail(),
+        ];
+      case 'new-password':
+        return [
+          body('password', 'Password is required')
+            .trim()
+            .escape()
+            .exists()
+            .not()
+            .isEmpty(),
+        ];
       default:
         return [
           body('email', 'Provide a valid email')
