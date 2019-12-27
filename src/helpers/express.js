@@ -6,7 +6,9 @@ import helmet from 'helmet';
 import cors from 'cors';
 import logger from 'morgan';
 import swaggerDoc from '../swagger/swagger';
+import passport from '../config/passport-config';
 
+passport;
 const app = express();
 app.use(bodyParser.json());
 app.use(logger('dev'));

@@ -15,7 +15,9 @@
 		"src/database/**",
 		"src/helpers/**",
 		"src/models/**",
-		"src/index.js"
+		"src/index.js",
+		"src/controllers/social-auth.*",
+		"src/config/passport-config.js"
 	],
 	"sourceMap": false,
 	"instrument": false,

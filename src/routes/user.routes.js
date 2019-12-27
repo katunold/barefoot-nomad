@@ -1,10 +1,14 @@
 import { Router } from 'express';
+import passport from 'passport';
 import RegisterController from '../controllers/register.controller';
 import Validations from '../middlewares/validation';
 import LoginController from '../controllers/login.controller';
 import ResetController from '../controllers/reset.controller';
+import SocialAuthController from '../controllers/social-auth.controller';
 
 const router = Router();
+const passportGoogle = passport.authenticate('googleToken', { session: false });
+const passportFacebook = passport.authenticate('facebookToken', { session: false });
 
 router.post(
   '/register',
@@ -32,5 +36,7 @@ router.put(
   Validations.validityCheck('new-password'),
   ResetController.newPassword,
 );
+router.post('/google', passportGoogle, SocialAuthController.googleAuth);
+router.post('/facebook', passportFacebook, SocialAuthController.facebookAuth);
 
 export default router;

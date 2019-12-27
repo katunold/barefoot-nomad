@@ -25,13 +25,11 @@ export default class RegisterController {
       });
     }
 
-    const user = await Actions.addData(db.User, req.body, [
-      'userId',
-      'firstName',
-      'lastName',
-      'email',
-      'password',
-    ]);
+    const user = await Actions.addData(
+      db.User,
+      Object.assign(req.body, { strategy: 'local' }),
+      ['userId', 'firstName', 'lastName', 'email', 'strategy', 'password'],
+    );
 
     Mailer.sendVerification(user, res);
   };
