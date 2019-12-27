@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
+      strategy: DataTypes.STRING,
       verified: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -20,11 +21,18 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         beforeCreate: (user) => {
-          user.userId = bcrypt.hashSync(user.email, 8);
-          user.password = bcrypt.hashSync(user.password, 8);
+          if (user.strategy === 'local') {
+            user.userId = bcrypt.hashSync(user.email, 8);
+            user.password = bcrypt.hashSync(user.password, 8);
+            return;
+          }
+          user.userId = user.socialId;
         },
       },
     },
+    {
+      freezeTableName: true
+    }
   );
 
   User.prototype.validatePassword = async function validatePassword(password) {
