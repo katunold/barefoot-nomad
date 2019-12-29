@@ -32,5 +32,5 @@ export default class Actions {
   static findOrCreate = async (model, clause, dataObj) => model.findOrCreate({
     where: clause,
     defaults: dataObj,
-  })
+  });
 }

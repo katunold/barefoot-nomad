@@ -93,3 +93,67 @@ exports.resetPasswordData = {
 exports.faultyResetPasswordData = {
   email: 'testclient@gmail'
 };
+
+exports.userProfile = {
+  "userId": "116000837208538146118",
+  "profilePic": "https://lh3.googleusercontent.com/a-/AAuE7mATW8ztUMxpSiJ9sdQYdS4UZN_LNhwpydHLEqSUuQ=s50",
+  "firstName": "Arnold",
+  "lastName": "Katumba",
+  "email": "katunold94@gmail.com",
+  "gender": null,
+  "birthDate": null,
+  "residence": null,
+  "role": null,
+  "department": null,
+  "lineManager": null,
+  "preferredLanguage": null,
+  "preferredCurrency": null,
+  "createdAt": "2019-12-29T09:55:43.999Z",
+  "updatedAt": "2019-12-29T09:55:43.999Z"
+};
+
+exports.profileUpdateData = {
+  "gender": "m",
+  "birthDate": "1994-10-25",
+  "residence": "Kampala",
+  "role": "Software Engineer",
+  "department": "Partner Engineering",
+  "lineManager": "Magero",
+  "preferredLanguage": "English",
+  "preferredCurrency": "usd"
+};
+
+exports.faultyProfileUpdateData = {
+  "profilePic": "hhjghfngfcnvh.com",
+  "gender": "m",
+  "birthDate": "1994-10-25",
+  "email": "testuser@gmail.com",
+  "firstName": "Arnold",
+  "role": "1yagva23 234y321"
+};
+
+exports.updateProfileResponse = [
+  1,
+  [
+    {
+      "userId": "116000837208538146118",
+      "profilePic": "https://lh3.googleusercontent.com/a-/AAuE7mATW8ztUMxpSiJ9sdQYdS4UZN_LNhwpydHLEqSUuQ=s50",
+      "firstName": "Arnold",
+      "lastName": "Katumba",
+      "email": "katunold94@gmail.com",
+      "gender": "male",
+      "birthDate": "1994-10-25",
+      "residence": "Kampala",
+      "role": "Software Engineer",
+      "department": "Partner Engineering",
+      "lineManager": "Mr. Magero",
+      "preferredLanguage": "English",
+      "preferredCurrency": "usd",
+      "strategy": "google-plus",
+      "verified": true,
+      "password": null,
+      "createdAt": "2019-12-29T18:16:38.553Z",
+      "updatedAt": "2019-12-29T18:19:54.754Z"
+    }
+  ]
+];
