@@ -10,24 +10,24 @@ module.exports = {
         type: Sequelize.STRING
       },
       firstName: {
-        type: Sequelize.STRING(45)
+        type: Sequelize.STRING
       },
       lastName: {
-        type: Sequelize.STRING(45)
+        type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING(45)
+        type: Sequelize.STRING
       },
       gender: {
-        type: Sequelize.STRING(10),
+        type: Sequelize.STRING,
       },
       birthDate: Sequelize.DATEONLY,
-      residence: Sequelize.STRING(100),
-      role: Sequelize.STRING(100),
-      department: Sequelize.STRING(45),
-      lineManager: Sequelize.STRING(45),
-      preferredLanguage: Sequelize.STRING(45),
-      preferredCurrency: Sequelize.STRING(45),
+      residence: Sequelize.STRING,
+      role: Sequelize.STRING,
+      department: Sequelize.STRING,
+      lineManager: Sequelize.STRING,
+      preferredLanguage: Sequelize.STRING,
+      preferredCurrency: Sequelize.STRING,
       strategy: {
         type: Sequelize.STRING
       },
@@ -36,7 +36,7 @@ module.exports = {
         defaultValue: false
       },
       password: {
-        type: Sequelize.STRING(45)
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
