@@ -235,7 +235,6 @@
       "get": {
         "description": "Return user profile",
         "produces": ["application/json"],
-        "security": [],
         "responses": {
           "200": {
             "description": "ok"
@@ -255,7 +254,6 @@
       "put": {
         "description": "Update user profile",
         "consumes": ["application/json"],
-        "security": [],
         "parameters": [
           {
             "$ref": "#/parameters/profile"
