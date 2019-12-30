@@ -19,8 +19,7 @@ module.exports = {
         type: Sequelize.STRING(45)
       },
       gender: {
-        type: Sequelize.ENUM,
-        values: ['male', 'female']
+        type: Sequelize.STRING(10),
       },
       birthDate: Sequelize.DATEONLY,
       residence: Sequelize.STRING(100),
@@ -47,7 +46,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    },
+      {
+      freezeTableName: true
+      }
+    );
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('User');
