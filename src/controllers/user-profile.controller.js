@@ -1,7 +1,7 @@
 import Actions from '../helpers/actions';
 import db from '../models';
 import { validationResult } from 'express-validator';
-import Validations from '../middlewares/validation';
+import { errorDisplay } from '../middlewares/validations';
 
 export default class UserProfileController {
   static getUserProfile = async (req, res, next) => {
@@ -34,7 +34,7 @@ export default class UserProfileController {
     const { auth, body } = req;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return Validations.errorDisplay(req, res, errors);
+      return errorDisplay(req, res, errors);
     }
     try {
       const response = await Actions.updateData(db.User, body, [

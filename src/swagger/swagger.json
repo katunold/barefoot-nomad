@@ -29,6 +29,10 @@
     {
       "name": "Profile",
       "description": "Everything about the user profile"
+    },
+    {
+      "name": "Trip",
+      "description": "Everything about trips"
     }
   ],
   "paths": {
@@ -279,6 +283,33 @@
           "Profile"
         ]
       }
+    },
+    "/trip/one-way": {
+      "post": {
+        "description": "Create one way trip",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/one-way-trip"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created"
+          },
+          "422": {
+            "description": "unprocessable entity"
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        },
+        "tags": [
+          "Trip"
+        ]
+      }
     }
   },
   "parameters": {
@@ -512,6 +543,50 @@
           "lineManager": "Magero",
           "preferredLanguage": "English",
           "preferredCurrency": "usd"
+        }
+      }
+    },
+    "one-way-trip": {
+      "in": "body",
+      "name": "one way trip",
+      "description": "User can submit a request for a one way trip here",
+      "schema": {
+        "type": "object",
+        "required": [
+          "start",
+          "stop",
+          "travelDate",
+          "travelReason",
+          "accommodation"
+        ],
+        "properties": {
+          "start": {
+            "type": "string",
+            "default": false
+          },
+          "stop": {
+            "type": "string",
+            "default": false
+          },
+          "travelDate": {
+            "type": "string",
+            "default": false
+          },
+          "travelReason": {
+            "type": "string",
+            "default": false
+          },
+          "accommodation": {
+            "type": "string",
+            "default": false
+          }
+        },
+        "example": {
+          "start": "Kampala",
+          "stop": "Nairobi",
+          "travelDate": "2020-01-04T05:52Z",
+          "travelReason": "Business oriented",
+          "accommodation": "Acadia suits"
         }
       }
     }

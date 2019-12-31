@@ -3,7 +3,6 @@ import sinon from 'sinon';
 import db from '../src/models';
 import mockData from './helpers/mock-data';
 import server from '../src';
-import Verification from '../src/helpers';
 import logInHelper from './helpers/login-helper';
 
 const { expect } = chai;
