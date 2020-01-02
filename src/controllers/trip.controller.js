@@ -19,9 +19,9 @@ export default class TripController {
     }
     const booking = await Actions.addData(
       db.Trip,
-      { ...body, UserId: auth.sub },
+      { ...body, userId: auth.sub },
       [
-        'UserId',
+        'userId',
         'start',
         'stop',
         'travelDate',
