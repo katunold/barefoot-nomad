@@ -11,7 +11,7 @@
     "migrations": "sequelize db:migrate",
     "migrations:undo:all": "sequelize db:migrate:undo:all",
     "build": "cross-env NODE_ENV=production babel src -d dist --copy-files",
-    "start": "npm run migrations:undo:all $$ npm run migrations && cross-env NODE_ENV=production node dist/index.js",
+    "start": "npm run migrations && cross-env NODE_ENV=production node dist/index.js",
     "lint": "eslint .",
     "reset-db": "sequelize db:drop && sequelize db:create"
   },
