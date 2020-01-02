@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       password: DataTypes.STRING,
     },
     {
+      freezeTableName: true,
       hooks: {
         beforeCreate: (user) => {
           if (user.strategy === 'local') {
