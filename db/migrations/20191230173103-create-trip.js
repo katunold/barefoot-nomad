@@ -38,7 +38,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    },
+      {
+        freezeTableName: true
+      }
+      );
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Trip');
