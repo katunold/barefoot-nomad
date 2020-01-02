@@ -7,8 +7,8 @@ export default class UserProfileController {
   static getUserProfile = async (req, res, next) => {
     const { sub } = req.auth;
     try {
-      const userProfile = await Actions.findData(db.User, { userId: sub }, [
-        'userId',
+      const userProfile = await Actions.findData(db.User, { id: sub }, [
+        'id',
         'profilePic',
         'firstName',
         'lastName',
@@ -51,9 +51,9 @@ export default class UserProfileController {
         'preferredLanguage',
         'preferredCurrency',
         ],
-        { userId: auth.sub},
+        { id: auth.sub},
         [
-          'userId',
+          'id',
           'profilePic',
           'firstName',
           'lastName',
