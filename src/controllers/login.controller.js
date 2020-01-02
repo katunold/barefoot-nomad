@@ -2,7 +2,7 @@ import { validationResult } from 'express-validator';
 import db from '../models';
 import Actions from '../helpers/actions';
 import Jwt from '../helpers/jwt';
-import Validations from '../middlewares/validation';
+import { errorDisplay } from '../middlewares/validations';
 
 export default class LoginController {
   static login = async (req, res) => {
@@ -10,7 +10,7 @@ export default class LoginController {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return Validations.errorDisplay(req, res, errors);
+      return errorDisplay(req, res, errors);
     }
 
     const user = await Actions.findData(db.User, { email }, [

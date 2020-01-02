@@ -157,3 +157,37 @@ exports.updateProfileResponse = [
     }
   ]
 ];
+
+exports.oneWayTripRequestData = {
+  "start": "Kampala",
+  "stop": "Nairobi",
+  "travelDate": "2020-01-04T05:52Z",
+  "travelReason": "Business oriented",
+  "accommodation": "Acadia suits"
+};
+
+exports.oneWayTripRequestDataWithPastDate = {
+  "start": "Kampala",
+  "stop": "Nairobi",
+  "travelDate": "2019-01-04T05:52Z",
+  "travelReason": "Business oriented",
+  "accommodation": "Acadia suits"
+};
+
+exports.oneWayFaultyTripRequestData = {
+  "travelDate": "2020-01-04T05:52Z",
+  "travelReason": "Business oriented",
+  "accommodation": "Acadia suits"
+};
+
+exports.oneWayTripResponse = {
+  "id": 1,
+  "UserId": "116000837208538146118",
+  "start": "Kampala",
+  "stop": "Nairobi",
+  "travelDate": "2020-01-04T05:52:00.000Z",
+  "travelReason": "Business oriented",
+  "accommodation": "Acadia suits",
+  "updatedAt": "2020-01-02T08:55:01.731Z",
+  "createdAt": "2020-01-02T08:55:01.731Z"
+};

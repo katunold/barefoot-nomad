@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
     {
-      userId: {
+      id: {
         type: DataTypes.STRING,
         primaryKey: true,
       },
@@ -33,16 +33,13 @@ module.exports = (sequelize, DataTypes) => {
       hooks: {
         beforeCreate: (user) => {
           if (user.strategy === 'local') {
-            user.userId = bcrypt.hashSync(user.email, 8);
+            user.id = bcrypt.hashSync(user.email, 8);
             user.password = bcrypt.hashSync(user.password, 8);
             return;
           }
-          user.userId = user.socialId;
+          user.id = user.socialId;
         },
       },
-    },
-    {
-      freezeTableName: true
     }
   );
 

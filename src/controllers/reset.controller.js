@@ -2,16 +2,16 @@ import { validationResult } from 'express-validator';
 import bcrypt from 'bcrypt';
 import Actions from '../helpers/actions';
 import db from '../models';
-import Validations from '../middlewares/validation';
 import Mailer from '../helpers/mailer';
 import Verification from '../helpers';
+import { errorDisplay } from '../middlewares/validations';
 
 export default class ResetController {
   static passwordReset = async (req, res) => {
     const { email } = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return Validations.errorDisplay(req, res, errors);
+      return errorDisplay(req, res, errors);
     }
 
     const user = await Actions.findData(db.User, { email });
@@ -36,7 +36,7 @@ export default class ResetController {
     const { password } = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return Validations.errorDisplay(req, res, errors);
+      return errorDisplay(req, res, errors);
     }
     const newPassword = await bcrypt.hashSync(password, 8);
     const valid = await Verification.validateCode(res, req.query.code);

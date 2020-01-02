@@ -41,7 +41,7 @@ const newSocialAccount = async (profile, done) => {
   try {
     const user = await Actions.findOrCreate(
       db.User,
-      { userId: data.socialId, strategy: data.strategy },
+      { id: data.socialId, strategy: data.strategy },
       data,
     );
     done(null, user[0]);

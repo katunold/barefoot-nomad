@@ -11,10 +11,10 @@ export default class SocialAuthController {
   };
 
   static auth = (res, data) => {
-    const { userId, firstName } = data;
+    const { id, firstName } = data;
     return res.status(200).send({
       firstName,
-      access_token: Jwt.signToken(userId).token,
+      access_token: Jwt.signToken(id).token,
     })
   }
 

@@ -1,16 +1,16 @@
 import { validationResult } from 'express-validator';
 import db from '../models/index';
 import Actions from '../helpers/actions';
-import Validations from '../middlewares/validation';
 import Mailer from '../helpers/mailer';
 import Verification from '../helpers';
 import Jwt from '../helpers/jwt';
+import { errorDisplay } from '../middlewares/validations';
 
 export default class RegisterController {
   static register = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return Validations.errorDisplay(req, res, errors);
+      return errorDisplay(req, res, errors);
     }
 
     const checkUser = await db.User.findOne({
@@ -76,7 +76,7 @@ export default class RegisterController {
     const { email } = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return Validations.errorDisplay(req, res, errors);
+      return errorDisplay(req, res, errors);
     }
     const user = await Actions.findData(db.User, {
       email,

@@ -26,6 +26,7 @@ if (env !== 'development') {
 
 const db = {
   User: sequelize.import('./user'),
+  Trip: sequelize.import('./trip')
 };
 
 Object.keys(db).forEach((modelName) => {
