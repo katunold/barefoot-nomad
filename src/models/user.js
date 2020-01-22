@@ -12,21 +12,19 @@ module.exports = (sequelize, DataTypes) => {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
-      gender: {
-        type: DataTypes.STRING,
-      },
+      gender: DataTypes.STRING,
       birthDate: DataTypes.DATEONLY,
       residence: DataTypes.STRING,
-      role: DataTypes.STRING,
+      role: {
+        type: DataTypes.ENUM('super_admin', 'travel_admin', 'travel_team_member', 'manager', 'requester'),
+        defaultValue: 'requester',
+      },
       department: DataTypes.STRING,
       lineManager: DataTypes.STRING,
       preferredLanguage: DataTypes.STRING,
       preferredCurrency: DataTypes.STRING,
       strategy: DataTypes.STRING,
-      verified: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
+      verified: DataTypes.BOOLEAN,
       password: DataTypes.STRING,
     },
     {
@@ -46,6 +44,15 @@ module.exports = (sequelize, DataTypes) => {
 
   User.prototype.validatePassword = async function validatePassword(password) {
     return bcrypt.compare(password, this.password);
+  };
+
+  User.associate = (models) => {
+    User.hasMany(models.Trip, {
+      foreignKey: 'userId',
+      as: 'user',
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
+    })
   };
 
   return User;

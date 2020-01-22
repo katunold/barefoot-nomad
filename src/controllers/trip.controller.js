@@ -11,22 +11,23 @@ export default class TripController {
       return errorDisplay(req, res, errors);
     }
     const currentDate = Date.now();
-    const tripDate = Date.parse(body.travelDate);
-    if (currentDate >= tripDate) {
+    const departureDate = Date.parse(body.departureDate);
+    const returnDate = Date.parse(body.returnDate);
+    if (currentDate >= departureDate) {
       return res.status(422).send({
-        message: 'Travel date can only be in the future not the past'
+        message: 'Departure date can only be in the future not the past'
       });
     }
+
     const booking = await Actions.addData(
       db.Trip,
       { ...body, userId: auth.sub },
       [
         'userId',
-        'start',
-        'stop',
-        'travelDate',
+        'tripType',
+        'departureDate',
         'travelReason',
-        'accommodation',
+        'accommodationId',
       ],
     );
 

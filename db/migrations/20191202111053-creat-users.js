@@ -7,7 +7,8 @@ module.exports = {
         primaryKey: true
       },
       profilePic: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT,
+        allowNull: true
       },
       firstName: {
         type: Sequelize.STRING
@@ -20,12 +21,28 @@ module.exports = {
       },
       gender: {
         type: Sequelize.STRING,
+        allowNull: true
       },
-      birthDate: Sequelize.DATEONLY,
-      residence: Sequelize.STRING,
-      role: Sequelize.STRING,
-      department: Sequelize.STRING,
-      lineManager: Sequelize.STRING,
+      birthDate: {
+        type: Sequelize.DATEONLY,
+        allowNull: true
+      },
+      residence: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      role: {
+        type: Sequelize.ENUM('super_admin', 'travel_admin', 'travel_team_member', 'manager', 'requester'),
+        defaultValue: 'requester',
+      },
+      department: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      lineManagerId: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       preferredLanguage: Sequelize.STRING,
       preferredCurrency: Sequelize.STRING,
       strategy: {

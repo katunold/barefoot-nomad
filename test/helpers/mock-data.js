@@ -159,19 +159,17 @@ exports.updateProfileResponse = [
 ];
 
 exports.oneWayTripRequestData = {
-  "start": "Kampala",
-  "stop": "Nairobi",
-  "travelDate": "2020-01-04T05:52Z",
+  "tripType": "one_way",
+  "departureDate": "2020-01-25T05:52Z",
   "travelReason": "Business oriented",
-  "accommodation": "Acadia suits"
+  "accommodationId": "Acadia suits"
 };
 
 exports.oneWayTripRequestDataWithPastDate = {
-  "start": "Kampala",
-  "stop": "Nairobi",
-  "travelDate": "2019-01-04T05:52Z",
+  "tripType": "one_way",
+  "departureDate": "2020-01-04T05:52Z",
   "travelReason": "Business oriented",
-  "accommodation": "Acadia suits"
+  "accommodationId": "Acadia suits"
 };
 
 exports.oneWayFaultyTripRequestData = {
@@ -182,12 +180,12 @@ exports.oneWayFaultyTripRequestData = {
 
 exports.oneWayTripResponse = {
   "id": 1,
-  "UserId": "116000837208538146118",
-  "start": "Kampala",
-  "stop": "Nairobi",
-  "travelDate": "2020-01-04T05:52:00.000Z",
+  "userId": "116000837208538146118",
+  "tripType": "one_way",
+  "departureDate": "2020-01-25T05:52:00.000Z",
   "travelReason": "Business oriented",
-  "accommodation": "Acadia suits",
-  "updatedAt": "2020-01-02T08:55:01.731Z",
-  "createdAt": "2020-01-02T08:55:01.731Z"
+  "accommodationId": "Acadia suits",
+  "updatedAt": "2020-01-22T07:44:23.502Z",
+  "createdAt": "2020-01-22T07:44:23.502Z",
+  "returnDate": null
 };
