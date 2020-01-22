@@ -32,9 +32,16 @@ export default class UserProfileController {
 
   static updateUserProfile = async (req, res, next) => {
     const { auth, body } = req;
+    const keyArray = Object.keys(body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return errorDisplay(req, res, errors);
+    }
+    if (keyArray.includes('gender')) {
+      body.gender = body.gender.toUpperCase();
+    }
+    if (keyArray.includes('role')) {
+      body.role = body.role.toLowerCase();
     }
     try {
       const response = await Actions.updateData(db.User, body, [

@@ -55,6 +55,6 @@ describe('Trip route', () => {
     expect(response).to.have.status(422);
     expect(response.body)
       .to.have.property('message')
-      .to.contain('Travel date can only be in the future not the past');
+      .to.contain('Departure date can only be in the future not the past');
   });
 });
