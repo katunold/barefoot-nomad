@@ -2,6 +2,15 @@ import { body } from 'express-validator';
 
 export const tripValidation = () => [
   body(
+    ['departure', 'destination'],
+    'This should not be more than 20 alphabetic characters',
+  )
+    .trim()
+    .not()
+    .isEmpty()
+    .isLength({ min: 2, max: 20 })
+    .matches('^[a-z ]+$', 'i'),
+  body(
     'accommodationId',
     'This should not be more than 30 alphabetic characters',
   )
