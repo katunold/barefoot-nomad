@@ -9,9 +9,11 @@ let sandbox;
 sandbox = sinon.createSandbox();
 
 const logInHelper = async () => {
-
   sandbox.stub(userModel, 'findOne').returns(mockData.userDataResponseOnLogin);
-  const response = await chai.request(server).post('/login').send(mockData.loginData);
+  const response = await chai
+    .request(server)
+    .post('/login')
+    .send(mockData.loginData);
   const { access_token } = response.body;
   sandbox.restore();
   return access_token;

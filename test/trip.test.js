@@ -21,26 +21,57 @@ describe('Trip route', () => {
     sandbox.restore();
   });
 
-  const postOneWayTripHelper = async (tripData, responseData) => {
+  const postTripHelper = async (
+    tripData,
+    responseData,
+    tripType = 'one-way',
+  ) => {
     sandbox.stub(tripModel, 'create').returns(responseData);
     const accessToken = await logInHelper();
     return chai
       .request(server)
-      .post('/trip/one-way')
+      .post(`/trip/${tripType}`)
       .set({ Authorization: `Bearer ${accessToken}` })
       .send(tripData);
   };
 
   it('should accept request of a one way trip for a logged in user', async () => {
-    const response = await postOneWayTripHelper(
+    const response = await postTripHelper(
       mockData.oneWayTripRequestData,
       mockData.oneWayTripResponse,
     );
     expect(response).to.have.status(201);
   });
 
+  it('should accept request for a return-trip for a logged in user', async () => {
+    const response = await postTripHelper(
+      mockData.returnTripRequestData,
+      mockData.returnTripResponse,
+      'return-trip',
+    );
+    expect(response).to.have.status(201);
+  });
+
+  it('should throw error if return date is before departure date', async () => {
+    const response = await postTripHelper(
+      mockData.returnTripWrongReturnDate,
+      mockData.returnTripResponse,
+      'return-trip',
+    );
+    expect(response).to.have.status(422);
+  });
+
+  it('should return a 404 if route is not found', async () => {
+    const response = await postTripHelper(
+      mockData.returnTripWrongReturnDate,
+      mockData.returnTripResponse,
+      'return',
+    );
+    expect(response).to.have.status(404);
+  });
+
   it('should throw an error when invalid data is submitted', async () => {
-    const response = await postOneWayTripHelper(
+    const response = await postTripHelper(
       mockData.oneWayFaultyTripRequestData,
       mockData.oneWayTripResponse,
     );
@@ -48,7 +79,7 @@ describe('Trip route', () => {
   });
 
   it('should throw an error when the date submitted is already past', async () => {
-    const response = await postOneWayTripHelper(
+    const response = await postTripHelper(
       mockData.oneWayTripRequestDataWithPastDate,
       mockData.oneWayTripResponse,
     );

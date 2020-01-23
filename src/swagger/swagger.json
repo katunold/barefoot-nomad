@@ -282,15 +282,21 @@
         ]
       }
     },
-    "/trip/one-way": {
+    "/trip/{tripType}": {
       "post": {
-        "description": "Create one way trip",
+        "description": "Create trip",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "$ref": "#/parameters/one-way-trip"
+            "$ref": "#/parameters/trip"
+          },
+          {
+            "in": "path",
+            "name": "tripType",
+            "type": "string",
+            "required": true
           }
         ],
         "responses": {
@@ -544,29 +550,24 @@
         }
       }
     },
-    "one-way-trip": {
+    "trip": {
       "in": "body",
       "name": "one way trip",
       "description": "User can submit a request for a one way trip here",
       "schema": {
         "type": "object",
         "required": [
-          "start",
-          "stop",
-          "travelDate",
+          "departureDate",
+          "returnDate",
           "travelReason",
-          "accommodation"
+          "accommodationId"
         ],
         "properties": {
-          "start": {
+          "departureDate": {
             "type": "string",
             "default": false
           },
-          "stop": {
-            "type": "string",
-            "default": false
-          },
-          "travelDate": {
+          "returnDate": {
             "type": "string",
             "default": false
           },
@@ -574,17 +575,16 @@
             "type": "string",
             "default": false
           },
-          "accommodation": {
+          "accommodationId": {
             "type": "string",
             "default": false
           }
         },
         "example": {
-          "start": "Kampala",
-          "stop": "Nairobi",
-          "travelDate": "2020-01-04T05:52Z",
+          "departureDate": "2020-01-04",
+          "returnDate": "2020-01-06",
           "travelReason": "Business oriented",
-          "accommodation": "Acadia suits"
+          "accommodationId": "Acadia suits"
         }
       }
     }

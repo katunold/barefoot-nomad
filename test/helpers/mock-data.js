@@ -59,7 +59,7 @@ exports.userDataResponseOnLogin = {
   dataValues: {
     password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
   },
-  validatePassword: () => true
+  validatePassword: () => true,
 };
 
 exports.userDataResponseOnLoginNotVerified = {
@@ -71,7 +71,7 @@ exports.userDataResponseOnLoginNotVerified = {
   dataValues: {
     password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
   },
-  validatePassword: () => true
+  validatePassword: () => true,
 };
 
 exports.validatePasswordFalse = {
@@ -83,109 +83,135 @@ exports.validatePasswordFalse = {
   dataValues: {
     password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
   },
-  validatePassword: () => false
+  validatePassword: () => false,
 };
 
 exports.resetPasswordData = {
-  email: 'testclient@gmail.com'
+  email: 'testclient@gmail.com',
 };
 
 exports.faultyResetPasswordData = {
-  email: 'testclient@gmail'
+  email: 'testclient@gmail',
 };
 
 exports.userProfile = {
-  "userId": "116000837208538146118",
-  "profilePic": "https://lh3.googleusercontent.com/a-/AAuE7mATW8ztUMxpSiJ9sdQYdS4UZN_LNhwpydHLEqSUuQ=s50",
-  "firstName": "Arnold",
-  "lastName": "Katumba",
-  "email": "katunold94@gmail.com",
-  "gender": null,
-  "birthDate": null,
-  "residence": null,
-  "role": null,
-  "department": null,
-  "lineManager": null,
-  "preferredLanguage": null,
-  "preferredCurrency": null,
-  "createdAt": "2019-12-29T09:55:43.999Z",
-  "updatedAt": "2019-12-29T09:55:43.999Z"
+  userId: '116000837208538146118',
+  profilePic:
+    'https://lh3.googleusercontent.com/a-/AAuE7mATW8ztUMxpSiJ9sdQYdS4UZN_LNhwpydHLEqSUuQ=s50',
+  firstName: 'Arnold',
+  lastName: 'Katumba',
+  email: 'katunold94@gmail.com',
+  gender: null,
+  birthDate: null,
+  residence: null,
+  role: null,
+  department: null,
+  lineManager: null,
+  preferredLanguage: null,
+  preferredCurrency: null,
+  createdAt: '2019-12-29T09:55:43.999Z',
+  updatedAt: '2019-12-29T09:55:43.999Z',
 };
 
 exports.profileUpdateData = {
-  "gender": "m",
-  "birthDate": "1994-10-25",
-  "residence": "Kampala",
-  "role": "Software Engineer",
-  "department": "Partner Engineering",
-  "lineManager": "Magero",
-  "preferredLanguage": "English",
-  "preferredCurrency": "usd"
+  gender: 'm',
+  birthDate: '1994-10-25',
+  residence: 'Kampala',
+  role: 'Software Engineer',
+  department: 'Partner Engineering',
+  lineManager: 'Magero',
+  preferredLanguage: 'English',
+  preferredCurrency: 'usd',
 };
 
 exports.faultyProfileUpdateData = {
-  "profilePic": "hhjghfngfcnvh.com",
-  "gender": "m",
-  "birthDate": "1994-10-25",
-  "email": "testuser@gmail.com",
-  "firstName": "Arnold",
-  "role": "1yagva23 234y321"
+  profilePic: 'hhjghfngfcnvh.com',
+  gender: 'm',
+  birthDate: '1994-10-25',
+  email: 'testuser@gmail.com',
+  firstName: 'Arnold',
+  role: '1yagva23 234y321',
 };
 
 exports.updateProfileResponse = [
   1,
   [
     {
-      "userId": "116000837208538146118",
-      "profilePic": "https://lh3.googleusercontent.com/a-/AAuE7mATW8ztUMxpSiJ9sdQYdS4UZN_LNhwpydHLEqSUuQ=s50",
-      "firstName": "Arnold",
-      "lastName": "Katumba",
-      "email": "katunold94@gmail.com",
-      "gender": "male",
-      "birthDate": "1994-10-25",
-      "residence": "Kampala",
-      "role": "Software Engineer",
-      "department": "Partner Engineering",
-      "lineManager": "Mr. Magero",
-      "preferredLanguage": "English",
-      "preferredCurrency": "usd",
-      "strategy": "google-plus",
-      "verified": true,
-      "password": null,
-      "createdAt": "2019-12-29T18:16:38.553Z",
-      "updatedAt": "2019-12-29T18:19:54.754Z"
-    }
-  ]
+      userId: '116000837208538146118',
+      profilePic:
+        'https://lh3.googleusercontent.com/a-/AAuE7mATW8ztUMxpSiJ9sdQYdS4UZN_LNhwpydHLEqSUuQ=s50',
+      firstName: 'Arnold',
+      lastName: 'Katumba',
+      email: 'katunold94@gmail.com',
+      gender: 'male',
+      birthDate: '1994-10-25',
+      residence: 'Kampala',
+      role: 'Software Engineer',
+      department: 'Partner Engineering',
+      lineManager: 'Mr. Magero',
+      preferredLanguage: 'English',
+      preferredCurrency: 'usd',
+      strategy: 'google-plus',
+      verified: true,
+      password: null,
+      createdAt: '2019-12-29T18:16:38.553Z',
+      updatedAt: '2019-12-29T18:19:54.754Z',
+    },
+  ],
 ];
 
 exports.oneWayTripRequestData = {
-  "tripType": "one_way",
-  "departureDate": "2020-01-25T05:52Z",
-  "travelReason": "Business oriented",
-  "accommodationId": "Acadia suits"
+  departureDate: '2030-01-04T05:52Z',
+  travelReason: 'Business oriented',
+  accommodationId: 'Acadia suits',
+};
+
+exports.returnTripRequestData = {
+  departureDate: '2030-01-04T05:52Z',
+  returnDate: '2030-01-05T05:52Z',
+  travelReason: 'Business oriented',
+  accommodationId: 'Acadia suits',
+};
+
+exports.returnTripWrongReturnDate = {
+  departureDate: '2030-01-05T05:52Z',
+  returnDate: '2030-01-04T05:52Z',
+  travelReason: 'Business oriented',
+  accommodationId: 'Acadia suits',
 };
 
 exports.oneWayTripRequestDataWithPastDate = {
-  "tripType": "one_way",
-  "departureDate": "2020-01-04T05:52Z",
-  "travelReason": "Business oriented",
-  "accommodationId": "Acadia suits"
+  departureDate: '2020-01-04T05:52Z',
+  travelReason: 'Business oriented',
+  accommodationId: 'Acadia suits',
 };
 
 exports.oneWayFaultyTripRequestData = {
-  "travelDate": "2020-01-04T05:52Z",
-  "travelReason": "Business oriented",
-  "accommodation": "Acadia suits"
+  travelDate: '2020-01-04T05:52Z',
+  travelReason: 'Business oriented',
+  accommodation: 'Acadia suits',
 };
 
 exports.oneWayTripResponse = {
-  "id": 1,
-  "userId": "116000837208538146118",
-  "tripType": "one_way",
-  "departureDate": "2020-01-25T05:52:00.000Z",
-  "travelReason": "Business oriented",
-  "accommodationId": "Acadia suits",
-  "updatedAt": "2020-01-22T07:44:23.502Z",
-  "createdAt": "2020-01-22T07:44:23.502Z",
-  "returnDate": null
+  id: 1,
+  userId: '116000837208538146118',
+  tripType: 'one_way',
+  departureDate: '2020-01-25T05:52:00.000Z',
+  travelReason: 'Business oriented',
+  accommodationId: 'Acadia suits',
+  updatedAt: '2020-01-22T07:44:23.502Z',
+  createdAt: '2020-01-22T07:44:23.502Z',
+  returnDate: null,
+};
+
+exports.returnTripResponse = {
+  id: 2,
+  userId: '116000837208538146118',
+  tripType: 'return-trip',
+  departureDate: '2020-01-25T05:52:00.000Z',
+  returnDate: '2020-01-30T05:52:00.000Z',
+  travelReason: 'Business oriented',
+  accommodationId: 'Acadia suits',
+  updatedAt: '2020-01-22T11:08:20.092Z',
+  createdAt: '2020-01-22T11:08:20.092Z',
 };
