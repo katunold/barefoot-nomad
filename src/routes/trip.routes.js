@@ -5,6 +5,11 @@ import { tripValidation } from '../middlewares/validations/trip.validation';
 
 const router = Router();
 
-router.post('/one-way', Jwt.requireSignIn, tripValidation(), TripController.tripBooking);
+router.post(
+  '/:tripType',
+  Jwt.requireSignIn,
+  tripValidation(),
+  TripController.tripBooking,
+);
 
 export default router;
