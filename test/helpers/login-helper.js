@@ -8,8 +8,8 @@ const userModel = db.User;
 let sandbox;
 sandbox = sinon.createSandbox();
 
-const logInHelper = async () => {
-  sandbox.stub(userModel, 'findOne').returns(mockData.userDataResponseOnLogin);
+const logInHelper = async (loginData) => {
+  sandbox.stub(userModel, 'findOne').returns(loginData);
   const response = await chai
     .request(server)
     .post('/login')

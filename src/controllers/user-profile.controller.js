@@ -44,21 +44,24 @@ export default class UserProfileController {
       body.role = body.role.toLowerCase();
     }
     try {
-      const response = await Actions.updateData(db.User, body, [
-        'profilePic',
-        'firstName',
-        'lastName',
-        'email',
-        'gender',
-        'birthDate',
-        'residence',
-        'role',
-        'department',
-        'lineManager',
-        'preferredLanguage',
-        'preferredCurrency',
+      const response = await Actions.updateData(
+        db.User,
+        body,
+        [
+          'profilePic',
+          'firstName',
+          'lastName',
+          'email',
+          'gender',
+          'birthDate',
+          'residence',
+          'role',
+          'department',
+          'lineManager',
+          'preferredLanguage',
+          'preferredCurrency',
         ],
-        { id: auth.sub},
+        { id: auth.sub },
         [
           'id',
           'profilePic',
@@ -75,8 +78,8 @@ export default class UserProfileController {
           'preferredCurrency',
           'createdAt',
           'updatedAt',
-        ]
-        );
+        ],
+      );
       return res.status(200).send(response);
     } catch (error) {
       next(error);

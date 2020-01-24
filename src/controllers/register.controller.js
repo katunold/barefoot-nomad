@@ -7,7 +7,7 @@ import Jwt from '../helpers/jwt';
 import { errorDisplay } from '../middlewares/validations';
 
 export default class RegisterController {
-  static register = async (req, res) => {
+  static register = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return errorDisplay(req, res, errors);
@@ -24,13 +24,11 @@ export default class RegisterController {
         message: 'User with that email exists, sign up with a different email',
       });
     }
-
     const user = await Actions.addData(
       db.User,
       Object.assign(req.body, { strategy: 'local' }),
-      ['userId', 'firstName', 'lastName', 'email', 'strategy', 'password'],
+      ['id', 'firstName', 'lastName', 'email', 'role', 'strategy', 'password'],
     );
-
     Mailer.sendVerification(user, res);
   };
 
@@ -45,15 +43,18 @@ export default class RegisterController {
           {
             returning: true,
             where: {
-              userId: valid[1],
+              id: valid[1],
             },
-            attributes: ['userId', 'firstName', 'lastName', 'email'],
+            attributes: ['id', 'firstName', 'lastName', 'email'],
           },
         );
         if (verifyAccount) {
           const { dataValues } = verifyAccount[1][0];
-          const { token, exp, iat } = await Jwt.signToken(dataValues.userId);
-          delete dataValues.userId;
+          const { token, exp, iat } = await Jwt.signToken(
+            dataValues.id,
+            dataValues.role,
+          );
+          delete dataValues.id;
           return res.status(200).send({
             message: `Your account has been verified 🎊`,
             user_data: dataValues,

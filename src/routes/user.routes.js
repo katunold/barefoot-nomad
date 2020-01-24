@@ -17,22 +17,14 @@ const passportFacebook = passport.authenticate('facebookToken', {
   session: false,
 });
 
-router.post(
-  '/register',
-  userRegisterValidation(),
-  RegisterController.register,
-);
+router.post('/register', userRegisterValidation(), RegisterController.register);
 router.get('/verify-email', RegisterController.accountVerification);
 router.post(
   '/resend',
   userPasswordValidation('resend-email'),
   RegisterController.resendVerificationEmail,
 );
-router.post(
-  '/login',
-  userLoginValidation(),
-  LoginController.login,
-);
+router.post('/login', userLoginValidation(), LoginController.login);
 router.post(
   '/reset-password',
   userPasswordValidation('reset-password'),

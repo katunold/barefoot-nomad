@@ -36,12 +36,11 @@ export default class LoginController {
     }
     const validPassword = await user.validatePassword(password);
     delete user.dataValues.password;
-
     return validPassword
       ? res.status(200).send({
           success: 'Successfully logged in',
           userData: user,
-          access_token: Jwt.signToken(user.userId).token,
+          access_token: Jwt.signToken(user.userId, user.role).token,
         })
       : res
           .status(400)

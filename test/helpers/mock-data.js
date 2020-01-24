@@ -56,6 +56,20 @@ exports.userDataResponseOnLogin = {
   lastName: 'Katumba',
   email: 'katunold94@gmail.com',
   verified: true,
+  role: 'requester',
+  dataValues: {
+    password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
+  },
+  validatePassword: () => true,
+};
+
+exports.supplierDataResponseOnLogin = {
+  userId: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
+  firstName: 'Arnold',
+  lastName: 'Katumba',
+  email: 'katunold94@gmail.com',
+  verified: true,
+  role: 'supplier',
   dataValues: {
     password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
   },
@@ -224,4 +238,30 @@ exports.returnTripResponse = {
   accommodationId: 'Acadia suits',
   updatedAt: '2020-01-22T11:08:20.092Z',
   createdAt: '2020-01-22T11:08:20.092Z',
+};
+
+exports.createAccommodationFacilityResponse = {
+  message: 'Accommodation facility has been added successfully',
+  response: {
+    description: 'Not provided',
+    address: 'Not provided',
+    available: true,
+    id: 1,
+    facilityName: 'Acadia suites',
+    locationId: 10,
+    numberOfRooms: 50,
+    updatedAt: '2020-01-24T06:53:19.340Z',
+    createdAt: '2020-01-24T06:53:19.340Z',
+  },
+};
+
+exports.createAccommodationFacility = {
+  facilityName: 'Acadia suites',
+  locationId: 10,
+  numberOfRooms: 50,
+};
+
+exports.createAccommodationFacilityFaulty = {
+  locationId: 10,
+  numberOfRooms: 50,
 };

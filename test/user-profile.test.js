@@ -22,7 +22,7 @@ describe('User Profile', () => {
   });
 
   const getUserProfileHelper = async (responseData, error = false) => {
-    const accessToken = await logInHelper();
+    const accessToken = await logInHelper(mockData.userDataResponseOnLogin);
     error
       ? sandbox.stub(userModel, 'findOne').throws(['Something went wrong'])
       : sandbox.stub(userModel, 'findOne').returns(responseData);
@@ -38,7 +38,7 @@ describe('User Profile', () => {
     responseData,
     error = false,
   ) => {
-    const accessToken = await logInHelper();
+    const accessToken = await logInHelper(mockData.userDataResponseOnLogin);
     error
       ? sandbox.stub(userModel, 'update').throws(['Something went wrong'])
       : sandbox.stub(userModel, 'update').returns(responseData);

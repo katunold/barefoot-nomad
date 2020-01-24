@@ -29,8 +29,9 @@ export default class Actions {
       : await model.update(data, { fields: permit, returning, where: clause });
   };
 
-  static findOrCreate = async (model, clause, dataObj) => model.findOrCreate({
-    where: clause,
-    defaults: dataObj,
-  });
+  static findOrCreate = async (model, clause, dataObj) =>
+    model.findOrCreate({
+      where: clause,
+      defaults: dataObj,
+    });
 }
