@@ -1,6 +1,3 @@
-import db from '../models';
-import Jwt from './jwt';
-
 export default class Verification {
   static generateVerificationCode = (user) => {
     const now = new Date();
@@ -12,7 +9,7 @@ export default class Verification {
     return `${timeHash}-${userString}`;
   };
 
-  static getUserString = (user) => `${user.userId}`;
+  static getUserString = (user) => `${user.id}`;
 
   static validateCode = async (res, code) => {
     const [timeHash, reqUserHash] = code.split('-');
@@ -20,10 +17,9 @@ export default class Verification {
 
     const diff = new Date(timestamp) - new Date();
     if (Math.abs(diff) > 3600000) {
-      return [ false ];
+      return [false];
     }
 
-    return [ true, reqUserHash ];
-
+    return [true, reqUserHash];
   };
 }

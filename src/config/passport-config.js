@@ -21,12 +21,18 @@ passport.use(
 );
 
 // Facebook OAUTH strategy
-passport.use('facebookToken', new FacebookTokenStrategy({
-  clientID: process.env.facebookClientID,
-  clientSecret: process.env.facebookClientSecret,
-}, async (accessToken, refreshToken, profile, done) => {
-  await newSocialAccount(profile, done);
-}));
+passport.use(
+  'facebookToken',
+  new FacebookTokenStrategy(
+    {
+      clientID: process.env.facebookClientID,
+      clientSecret: process.env.facebookClientSecret,
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      await newSocialAccount(profile, done);
+    },
+  ),
+);
 
 const newSocialAccount = async (profile, done) => {
   const data = {

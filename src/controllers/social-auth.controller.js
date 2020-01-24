@@ -1,7 +1,6 @@
 import Jwt from '../helpers/jwt';
 
 export default class SocialAuthController {
-
   static googleAuth = (req, res) => {
     this.auth(res, req.user);
   };
@@ -15,7 +14,6 @@ export default class SocialAuthController {
     return res.status(200).send({
       firstName,
       access_token: Jwt.signToken(id).token,
-    })
-  }
-
+    });
+  };
 }

@@ -16,7 +16,14 @@ module.exports = (sequelize, DataTypes) => {
       birthDate: DataTypes.DATEONLY,
       residence: DataTypes.STRING,
       role: {
-        type: DataTypes.ENUM('super_admin', 'travel_admin', 'travel_team_member', 'manager', 'requester'),
+        type: DataTypes.ENUM(
+          'super_admin',
+          'travel_admin',
+          'travel_team_member',
+          'manager',
+          'supplier',
+          'requester',
+        ),
         defaultValue: 'requester',
       },
       department: DataTypes.STRING,
@@ -24,7 +31,10 @@ module.exports = (sequelize, DataTypes) => {
       preferredLanguage: DataTypes.STRING,
       preferredCurrency: DataTypes.STRING,
       strategy: DataTypes.STRING,
-      verified: DataTypes.BOOLEAN,
+      verified: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       password: DataTypes.STRING,
     },
     {
@@ -39,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
           user.id = user.socialId;
         },
       },
-    }
+    },
   );
 
   User.prototype.validatePassword = async function validatePassword(password) {
@@ -51,8 +61,8 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       as: 'user',
       onDelete: 'CASCADE',
-      onUpdate: 'CASCADE'
-    })
+      onUpdate: 'CASCADE',
+    });
   };
 
   return User;

@@ -2,7 +2,7 @@ import * as JWT from 'jsonwebtoken';
 import expressJwt from 'express-jwt';
 
 export default class Jwt {
-  static signToken = (userId) => {
+  static signToken = (userId, userRole) => {
     const iat = new Date().getTime();
     const exp = new Date().setDate(new Date().getDate() + 1);
     const { JWT_SECRET, JWT_ISSUER } = process.env;
@@ -10,6 +10,7 @@ export default class Jwt {
       {
         iss: JWT_ISSUER,
         sub: userId,
+        userRole,
         iat,
         exp,
       },

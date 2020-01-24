@@ -27,7 +27,7 @@ describe('Trip route', () => {
     tripType = 'one-way',
   ) => {
     sandbox.stub(tripModel, 'create').returns(responseData);
-    const accessToken = await logInHelper();
+    const accessToken = await logInHelper(mockData.userDataResponseOnLogin);
     return chai
       .request(server)
       .post(`/trip/${tripType}`)
