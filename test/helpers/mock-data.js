@@ -265,3 +265,24 @@ exports.createAccommodationFacilityFaulty = {
   locationId: 10,
   numberOfRooms: 50,
 };
+
+exports.cloudinaryProfilePicResponse = {
+  public_id: 'xp7rpmprtzgc8mq5px8e',
+  version: 1573108169,
+  signature: 'fb45af8704d36f39ab7f0c52027d0f6bc9523e25',
+  width: 3264,
+  height: 2448,
+  format: 'jpg',
+  resource_type: 'image',
+  created_at: '2019-11-07T06:29:29Z',
+  tags: [],
+  bytes: 272302,
+  type: 'upload',
+  etag: '25111849f179fe82ecf99bccd7b5932d',
+  placeholder: false,
+  url:
+    'http://res.cloudinary.com/katunold/image/upload/v1573108169/xp7rpmprtzgc8mq5px8e.jpg',
+  secure_url:
+    'https://res.cloudinary.com/katunold/image/upload/v1573108169/xp7rpmprtzgc8mq5px8e.jpg',
+  original_filename: 'IMG_20190907_102217',
+};
