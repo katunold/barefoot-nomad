@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: 'requester',
       },
       department: DataTypes.STRING,
-      lineManager: DataTypes.STRING,
+      lineManagerId: DataTypes.STRING,
       preferredLanguage: DataTypes.STRING,
       preferredCurrency: DataTypes.STRING,
       strategy: DataTypes.STRING,
