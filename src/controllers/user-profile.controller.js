@@ -2,6 +2,7 @@ import Actions from '../helpers/actions';
 import db from '../models';
 import { validationResult } from 'express-validator';
 import { errorDisplay } from '../middlewares/validations';
+import ImageUpload from '../helpers/image-upload';
 
 export default class UserProfileController {
   static getUserProfile = async (req, res, next) => {
@@ -42,6 +43,10 @@ export default class UserProfileController {
     }
     if (keyArray.includes('role')) {
       body.role = body.role.toLowerCase();
+    }
+    if (body.profilePic) {
+      const pic = await ImageUpload.uploadImages(body.profilePic);
+      body.profilePic = pic.secure_url;
     }
     try {
       const response = await Actions.updateData(

@@ -4,6 +4,8 @@ import db from '../src/models';
 import mockData from './helpers/mock-data';
 import server from '../src';
 import logInHelper from './helpers/login-helper';
+import cloudImages from '../src/config/cloudinary-config';
+import ImageUpload from '../src/helpers/image-upload';
 
 const { expect } = chai;
 
@@ -83,5 +85,18 @@ describe('User Profile', () => {
       mockData.updateProfileResponse,
     );
     expect(response).to.have.status(422);
+  });
+
+  it('should update user data with a profile image', async () => {
+    sandbox
+      .stub(ImageUpload, 'uploadImages')
+      .returns(mockData.cloudinaryProfilePicResponse);
+    const response = await updateUserProfileHelper(
+      {
+        profilePic: '/Users/arnold/Downloads/IMG_20191120_090824.jpg',
+      },
+      mockData.updateProfileResponse,
+    );
+    expect(response).to.have.status(200);
   });
 });
