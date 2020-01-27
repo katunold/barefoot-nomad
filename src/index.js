@@ -13,7 +13,7 @@ if (NODE_ENV === 'development') {
     .authenticate()
     .then(async () => {
       console.log(`successfully connected to the ${DB_DEV_NAME} `);
-      await db.sequelize.sync({ force: false, logging: false });
+      await db.sequelize.sync({ force: true, logging: false });
     })
     .catch((err) => console.log(`Error: ${err}`));
 }

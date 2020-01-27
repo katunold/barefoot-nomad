@@ -1,13 +1,13 @@
 import { body } from 'express-validator';
 
 export const userProfileUpdateValidation = () => [
-  // body('profilePic', 'Should be in a url format')
-  //   .trim()
-  //   .escape()
-  //   .optional()
-  //   .isString()
-  //   .not()
-  //   .isEmpty(),
+  body('profilePic', 'Should be in a url format')
+    .trim()
+    .escape()
+    .optional()
+    .isURL()
+    .not()
+    .isEmpty(),
   body(
     ['firstName', 'lastName'],
     'Should be not more than 15 character and not less than 2 characters',

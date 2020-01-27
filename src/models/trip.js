@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       targetKey: 'id',
     });
+
+    Trip.belongsTo(models.Request, {
+      foreignKey: 'requestId',
+      targetKey: 'id',
+    });
   };
   return Trip;
 };

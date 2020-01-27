@@ -34,16 +34,35 @@ export default class TripController {
         message: `${params.tripType} is not a recognized trip route`,
       });
     } else {
+      const newRequest = await Actions.addData(
+        db.Request,
+        {
+          requesterId: auth.sub,
+          lineManagerId: 1,
+        },
+        ['requesterId', 'lineManagerId'],
+      );
+
+      console.log('>>>>>>>>>>>>>>>>>>>>>>', newRequest);
+
       const booking = await Actions.addData(
         db.Trip,
-        { ...body, userId: auth.sub, tripType: params.tripType },
+        {
+          ...body,
+          userId: auth.sub,
+          tripType: params.tripType,
+          requestId: newRequest.dataValues.id,
+        },
         [
           'userId',
+          'departure',
+          'destination',
           'tripType',
           'departureDate',
           'returnDate',
           'travelReason',
           'accommodationId',
+          'requestId',
         ],
       );
 

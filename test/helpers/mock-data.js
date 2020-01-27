@@ -286,3 +286,10 @@ exports.cloudinaryProfilePicResponse = {
     'https://res.cloudinary.com/katunold/image/upload/v1573108169/xp7rpmprtzgc8mq5px8e.jpg',
   original_filename: 'IMG_20190907_102217',
 };
+
+exports.requestTripResponse = {
+  dataValues: {
+    id: 1,
+    lineManagerId: 'yuwdgvcvxgdhq',
+  },
+};
