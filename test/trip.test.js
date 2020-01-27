@@ -8,6 +8,7 @@ import logInHelper from './helpers/login-helper';
 const { expect } = chai;
 
 const tripModel = db.Trip;
+const requestModel = db.Request;
 
 describe('Trip route', () => {
   let sandbox;
@@ -26,6 +27,7 @@ describe('Trip route', () => {
     responseData,
     tripType = 'one-way',
   ) => {
+    sandbox.stub(requestModel, 'create').returns(mockData.requestTripResponse);
     sandbox.stub(tripModel, 'create').returns(responseData);
     const accessToken = await logInHelper(mockData.userDataResponseOnLogin);
     return chai
