@@ -28,7 +28,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        id: bcrypt.hashSync('Jjagwe@gmail.com', 8),
+        id: 'manager-1',
         firstName: 'Denis',
         lastName: 'Jjagwe',
         lineManagerId: 'super-admin-user',
@@ -42,7 +42,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        id: bcrypt.hashSync('katunold94@gmail.com', 8),
+        id: 'manager-2',
         firstName: 'Arnold',
         lastName: 'Katumba',
         lineManagerId: 'super-admin-user',

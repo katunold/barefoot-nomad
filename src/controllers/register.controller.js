@@ -29,6 +29,9 @@ export default class RegisterController {
       Object.assign(req.body, { strategy: 'local' }),
       ['id', 'firstName', 'lastName', 'email', 'role', 'strategy', 'password'],
     );
+    Actions.addData(db.NotificationPreference, { userId: user.dataValues.id }, [
+      'userId',
+    ]);
     Mailer.sendVerification(user, res);
   };
 

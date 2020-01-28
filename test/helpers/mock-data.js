@@ -5,6 +5,16 @@ exports.registerData = {
   password: '1qaz2wsx',
 };
 
+exports.registerUserDbResponse = {
+  dataValues: {
+    id: 3,
+    firstName: 'arnold',
+    lastName: 'katumba',
+    email: 'katunold@gmail.com',
+    password: '1qaz2wsx',
+  },
+};
+
 exports.userData = {
   userId: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
   firstName: 'Arnold',
