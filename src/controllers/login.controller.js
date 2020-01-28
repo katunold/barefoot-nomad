@@ -14,11 +14,13 @@ export default class LoginController {
     }
 
     const user = await Actions.findData(db.User, { email }, [
-      'userId',
+      'id',
       'firstName',
       'lastName',
       'email',
       'verified',
+      'role',
+      'lineManagerId',
       'password',
     ]);
 
@@ -40,7 +42,8 @@ export default class LoginController {
       ? res.status(200).send({
           success: 'Successfully logged in',
           userData: user,
-          access_token: Jwt.signToken(user.userId, user.role).token,
+          access_token: Jwt.signToken(user.id, user.role, user.lineManagerId)
+            .token,
         })
       : res
           .status(400)

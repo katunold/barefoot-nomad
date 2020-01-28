@@ -43,8 +43,6 @@ export default class TripController {
         ['requesterId', 'lineManagerId'],
       );
 
-      console.log('>>>>>>>>>>>>>>>>>>>>>>', newRequest);
-
       const booking = await Actions.addData(
         db.Trip,
         {

@@ -346,6 +346,30 @@
           "Accommodation Facility"
         ]
       }
+    },
+    "/users": {
+      "get": {
+        "description": "Return all users registered with the system",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "400": {
+            "description": "bad request"
+          },
+          "401": { "description": "unauthorised" },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "internal server error"
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
     }
   },
   "parameters": {

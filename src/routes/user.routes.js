@@ -10,6 +10,7 @@ import { userRegisterValidation } from '../middlewares/validations/user-register
 import { userLoginValidation } from '../middlewares/validations/user-login.validation';
 import { userProfileUpdateValidation } from '../middlewares/validations/user-profile-update.validation';
 import { userPasswordValidation } from '../middlewares/validations/user-password.validation';
+import UsersController from '../controllers/users.controller';
 
 const router = Router();
 const passportGoogle = passport.authenticate('googleToken', { session: false });
@@ -44,5 +45,7 @@ router.put(
   userProfileUpdateValidation(),
   UserProfileController.updateUserProfile,
 );
+
+router.get('/users', Jwt.requireSignIn, UsersController.fetchAllUsers);
 
 export default router;

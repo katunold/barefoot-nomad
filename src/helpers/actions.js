@@ -11,6 +11,15 @@ export default class Actions {
       : await model.findOne({ where: clause });
   };
 
+  static fetchAll = async (model, clause, attributes = null) => {
+    return attributes
+      ? await model.findAndCountAll({
+          where: clause,
+          attributes,
+        })
+      : await model.findAndCountAll({ where: clause });
+  };
+
   static updateData = async (
     model,
     data,

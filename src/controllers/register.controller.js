@@ -45,7 +45,14 @@ export default class RegisterController {
             where: {
               id: valid[1],
             },
-            attributes: ['id', 'firstName', 'lastName', 'email'],
+            attributes: [
+              'id',
+              'firstName',
+              'lastName',
+              'email',
+              'role',
+              'lineManagerId',
+            ],
           },
         );
         if (verifyAccount) {
@@ -53,6 +60,7 @@ export default class RegisterController {
           const { token, exp, iat } = await Jwt.signToken(
             dataValues.id,
             dataValues.role,
+            dataValues.lineManagerId,
           );
           delete dataValues.id;
           return res.status(200).send({
