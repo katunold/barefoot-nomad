@@ -63,6 +63,19 @@ exports.userDataResponseOnLogin = {
   validatePassword: () => true,
 };
 
+exports.superAdminDataResponseLogin = {
+  userId: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
+  firstName: 'Arnold',
+  lastName: 'Katumba',
+  email: 'katunold94@gmail.com',
+  verified: true,
+  role: 'super_admin',
+  dataValues: {
+    password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
+  },
+  validatePassword: () => true,
+};
+
 exports.supplierDataResponseOnLogin = {
   userId: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
   firstName: 'Arnold',
@@ -292,4 +305,55 @@ exports.requestTripResponse = {
     id: 1,
     lineManagerId: 'yuwdgvcvxgdhq',
   },
+};
+
+exports.allUsers = {
+  count: 3,
+  rows: [
+    {
+      id: 'super-admin-user',
+      profilePic: null,
+      firstName: 'Denis',
+      lastName: 'Kasole',
+      email: 'kasole@gmail.com',
+      gender: 'm',
+      birthDate: null,
+      residence: null,
+      role: 'super_admin',
+      department: null,
+      lineManagerId: null,
+      strategy: 'local',
+      verified: true,
+    },
+    {
+      id: '$2b$08$wwsceZ8Sj8jNNZ/GPnTk6uFd2vnzNsUtThDed0xB/ho7i9GmIDAfa',
+      profilePic: null,
+      firstName: 'Denis',
+      lastName: 'Jjagwe',
+      email: 'Jjagwe@gmail.com',
+      gender: 'm',
+      birthDate: null,
+      residence: null,
+      role: 'manager',
+      department: null,
+      lineManagerId: 'super-admin-user',
+      strategy: 'local',
+      verified: true,
+    },
+    {
+      id: '$2b$08$ndSQHn4JMN7Jl1D7otPaDOlO9P5/GJ6xT6FeLCkUGNkktpiOZORlS',
+      profilePic: null,
+      firstName: 'Arnold',
+      lastName: 'Katumba',
+      email: 'katunold94@gmail.com',
+      gender: 'm',
+      birthDate: null,
+      residence: null,
+      role: 'manager',
+      department: null,
+      lineManagerId: 'super-admin-user',
+      strategy: 'local',
+      verified: true,
+    },
+  ],
 };
