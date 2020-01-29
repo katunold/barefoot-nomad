@@ -74,12 +74,12 @@ exports.userDataResponseOnLogin = {
 };
 
 exports.superAdminDataResponseLogin = {
-  userId: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
+  id: 'super-admin-user',
   firstName: 'Arnold',
   lastName: 'Katumba',
   email: 'katunold94@gmail.com',
   verified: true,
-  role: 'super_admin',
+  role: 'super-admin-user',
   dataValues: {
     password: '$2b$08$dqDFbSOjRoVF31pABrQ2uuheGNOV1whxzei8xGflWce4xDLrTmeu.',
   },
@@ -87,7 +87,7 @@ exports.superAdminDataResponseLogin = {
 };
 
 exports.supplierDataResponseOnLogin = {
-  userId: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
+  id: '$2b$08$0oZbNA/m9/m9drdYO3nnuONTD4AwgudRbixnGqWsw4OPvr1sNoLG.',
   firstName: 'Arnold',
   lastName: 'Katumba',
   email: 'katunold94@gmail.com',
@@ -367,3 +367,33 @@ exports.allUsers = {
     },
   ],
 };
+
+exports.roleUpdate = {
+  role: 'manager',
+};
+
+exports.updatedData = [
+  1,
+  [
+    {
+      id: 'manager-1',
+      profilePic: null,
+      firstName: 'Denis',
+      lastName: 'Jjagwe',
+      email: 'Jjagwe@gmail.com',
+      gender: 'm',
+      birthDate: null,
+      residence: null,
+      role: 'requester',
+      department: null,
+      lineManagerId: 'super-admin-user',
+      preferredLanguage: null,
+      preferredCurrency: null,
+      strategy: 'local',
+      verified: true,
+      password: '$2b$08$53F.mK60MjgPvkGfxNJRtuCIuBRx3THZ7SsuLbwgJBCX2/bWH9nNy',
+      createdAt: '2020-01-29T16:46:23.848Z',
+      updatedAt: '2020-01-29T16:46:34.984Z',
+    },
+  ],
+];
