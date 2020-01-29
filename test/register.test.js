@@ -9,6 +9,7 @@ import Verification from '../src/helpers';
 const { expect } = chai;
 
 const userModel = db.User;
+const notificationPreferencesModel = db.NotificationPreference;
 
 describe('Register', () => {
   let sandbox;
@@ -38,16 +39,28 @@ describe('Register', () => {
       .send();
   };
 
+  const registerUserTestHelper = (
+    registerData,
+    responseData = null,
+    userExists = null,
+  ) => {
+    sandbox.stub(userModel, 'findOne').returns(userExists);
+    sandbox.stub(userModel, 'create').returns(responseData);
+    sandbox.stub(notificationPreferencesModel, 'create').returns({});
+    return chai
+      .request(server)
+      .post('/register')
+      .send(registerData);
+  };
+
   // tests to cover user signup
 
   it('should create a new user account', async () => {
-    sandbox.stub(userModel, 'findOne').returns(null);
-    sandbox.stub(userModel, 'create').returns(mockData.registerData);
     sandbox.stub(sendGrid, 'send').resolves({});
-    const response = await chai
-      .request(server)
-      .post('/register')
-      .send(mockData.registerData);
+    const response = await registerUserTestHelper(
+      mockData.registerData,
+      mockData.registerUserDbResponse,
+    );
     expect(response).to.have.status(200);
     expect(response.body)
       .to.have.property('message')
@@ -57,11 +70,11 @@ describe('Register', () => {
   });
 
   it('should throw an error if the user email already exists', async () => {
-    sandbox.stub(userModel, 'findOne').returns(true);
-    const response = await chai
-      .request(server)
-      .post('/register')
-      .send(mockData.registerData);
+    const response = await registerUserTestHelper(
+      mockData.registerData,
+      mockData.registerUserDbResponse,
+      true,
+    );
     expect(response).to.have.status(400);
     expect(response.body)
       .to.have.property('message')
@@ -71,10 +84,9 @@ describe('Register', () => {
   });
 
   it('should return error if the user info is invalid', async () => {
-    const response = await chai
-      .request(server)
-      .post('/register')
-      .send(mockData.registerWithMissingFields);
+    const response = await registerUserTestHelper(
+      mockData.registerWithMissingFields,
+    );
     expect(response).to.have.status(422);
     expect(response.body).to.contain([]);
   });

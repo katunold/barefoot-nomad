@@ -29,6 +29,8 @@ const db = {
   Trip: sequelize.import('./trip'),
   AccommodationFacility: sequelize.import('./accommodationFacility'),
   Request: sequelize.import('./request'),
+  Notification: sequelize.import('./notification'),
+  NotificationPreference: sequelize.import('./notificationPreference'),
 };
 
 Object.keys(db).forEach((modelName) => {
