@@ -47,5 +47,6 @@ router.put(
 );
 
 router.get('/users', Jwt.requireSignIn, UsersController.fetchAllUsers);
+router.put('/users/:id', Jwt.requireSignIn, UsersController.assignUserANewRole);
 
 export default router;
