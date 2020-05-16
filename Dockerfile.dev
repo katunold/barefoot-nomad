@@ -10,9 +10,13 @@ COPY ./package.json .
 
 # install and cache app dependencies
 RUN npm i
+RUN npm i sequelize-cli@^5.5.1 -g
+RUN npm i npm install nodemon@^2.0.1 -g
 
 # add app
 COPY . .
-
+# Expose the api port
 EXPOSE 3000
+
+# Start server
 CMD ["npm", "run", "start:dev"]
