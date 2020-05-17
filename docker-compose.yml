@@ -1,15 +1,18 @@
 version: '3'
 services:
   postgres-server:
-    image: postgres:latest
+    image: postgres:9.6-alpine
+    container_name: barefoot-nomad-db
     environment:
       - "POSTGRES_USER=${DB_USER_NAME}"
       - "POSTGRES_DB=${DB_DEV_NAME}"
       - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+      - PGDATA=/var/lib/postgresql/data/pg9.6
     ports:
       - "5432:5432"
 
   api:
+    container_name: barefoot-nomad-api
     env_file:
       - .env
     build:
