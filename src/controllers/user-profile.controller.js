@@ -56,7 +56,6 @@ export default class UserProfileController {
           'gender',
           'birthDate',
           'residence',
-          'role',
           'department',
           'lineManagerId',
           'preferredLanguage',
