@@ -12,4 +12,6 @@ router.post(
   TripController.tripBooking,
 );
 
+router.get('', Jwt.requireSignIn, TripController.accountTrips);
+
 export default router;
