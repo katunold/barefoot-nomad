@@ -67,4 +67,27 @@ export default class TripController {
       return res.status(201).send(booking);
     }
   };
+
+  static accountTrips = async (req, res, next) => {
+    const { sub } = req.auth;
+    try {
+      const tripRequests = await Actions.findData(db.Trip, { userId: sub }, [
+        'id',
+        'departure',
+        'destination',
+        'tripType',
+        'departureDate',
+        'returnDate',
+        'travelReason',
+        'accommodationId',
+        'userId',
+        'requestId',
+        'createdAt',
+        'updatedAt',
+      ]);
+      return res.status(200).send(tripRequests);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
